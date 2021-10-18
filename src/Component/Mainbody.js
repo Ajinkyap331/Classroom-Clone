@@ -13,18 +13,23 @@ export const Mainbody = (props) => {
     history.push("/login");
   }
 
-  const [_class, setclass] = useState([])
+
+  const [fclass, setfclass] = useState([])
   const [load, setload] = useState(false)
-  const [data, setdata] = useState([])
+  const [fdata, setfdata] = useState([])
+  let data = [], _class = [];
 
   const db = firebase.firestore()
 
   const getData = async () => {
     await db.collection('users').doc(props.logged.email).collection('class').get().then((snap) => {
       snap.forEach((doc) => {
-        console.log(_class)
-        setclass(_class => [..._class, doc.data()])
+        _class.push(doc.data())
+        // setclass(_class => [..._class, doc.data()])
       })
+    }).then(() => {
+      console.log(_class)
+      setfclass(_class)
     })
 
   }
@@ -33,38 +38,37 @@ export const Mainbody = (props) => {
     console.log(code)
     await db.collection('room').where("code", "==", code).get().then((snap) => {
       snap.forEach((doc) => {
-        console.log(doc.data())
-        setdata(data => [...data, doc.data()])
+        data.push(doc.data())
+        // setdata(data => [...data, doc.data()])
       })
-    });
+    }).then(() => {
+      console.log(data)
+      setfdata(data)
+    }).then(() => {
+
+    })
   }
 
   const getIndData = () => {
-    console.log("Came")
+    console.log(_class)
     _class.forEach((e) => {
-      getSubdata(e.code)
+      console.log("came")
+      getSubdata(e.code).then(() => {
+        if (_class.length !== data.length) return
+        setload(true)
+      })
+
     })
 
   }
 
-  const init = () => {
-    getData()
-      .then(() => {
-        setload(true)
-      })
-    // .then(() => {
-    //   setload(true) 
-    //   getIndData()
-    // })
-    // .then(() => {
-    //   console.log(data)
-    //   
-    // })
-
-  }
 
   useEffect(() => {
-    init()
+    getData()
+      .then(() => {
+        getIndData()
+
+      })
   }, [])
 
 
@@ -73,9 +77,11 @@ export const Mainbody = (props) => {
   return (
     <div className="main-body">
       {load ? <>
-        {_class.map((e) => {
+        {fdata.map((e) => {
+          console.log("render")
+          console.log(e)
           return (
-            <Card key={e.code} />
+            <Card key= {e.code} name = {e.name} creator = {e.creator} desc = {e.desc} photo = {e.photo} code = {e.code}/>
           )
         })}
       </> : <></>}
@@ -85,3 +91,5 @@ export const Mainbody = (props) => {
     </div>
   )
 }
+
+// {desc: 'SY Btech', creator: 'Ajinkya Patil', code: '4fp4v', name: 'FDS', photo: 'https://lh3.googleusercontent.com/a-/AOh14Ggm__5Z1Fq8M654frVrgu7mv0D5rd4Xq5JNhmOVKvo=s96-c'}

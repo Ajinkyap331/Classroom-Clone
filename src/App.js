@@ -10,6 +10,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Create } from './Component/Create';
+import { Room } from './Component/Room';
 
 
 function App() {
@@ -56,6 +57,11 @@ function App() {
             exact
             path="/join/:code"
             render={(props) => <Join {...props} logged={logged} />}
+          />
+          <Route
+            exact
+            path="/room/:code"
+            render={(props) => <Room {...props} logged={logged} />}
           />
         </Switch>
       </Router>
