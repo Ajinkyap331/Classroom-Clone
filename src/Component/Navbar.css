@@ -2,81 +2,14 @@
   display: flex;
   padding: 1.1%;
   font-family: "Product Sans", Arial, Helvetica, sans-serif;
-  font-size: 1.38125rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.164);
   font-weight: lighter;
-}
-
-#slide-bar {
-  margin-right: 1rem;
-  margin-top: 0.15rem;
-  cursor: pointer;
-}
-
-#navbar-img {
-  margin-right: 0.2rem;
-}
-
-#navbar-right {
-  margin-left: auto;
-  display: flex;
-}
-
-#navbar-right > article {
-  font-size: 25px;
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-right: 1.5rem;
-  margin-top: 0.2rem;
-  padding: 0.2rem;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.logo {
-  height: 2rem;
-  width: 2rem;
-  margin-top: 0.2rem;
-  border-radius: 50%;
+  justify-content: space-between;
   align-items: center;
-  cursor: pointer;
+  font-size: calc((3vh + 1.5vw) / 2);
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: white;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.navbar > div {
-  padding: 0;
-}
-
-.navbar > div > p {
-  padding-left: 2rem;
-  margin: 0;
-  margin-top: 2rem;
-  background-color: rgb(203, 228, 236);
+.right {
   display: flex;
-  width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  align-items: center;
+  gap: 1vw;
 }
-
-.navbar > div > p > section {
-  padding-left: 2rem;
-}
-
-.sidenav h5{
-  padding : 0;
-  margin: 0;
-}
-
-

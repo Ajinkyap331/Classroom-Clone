@@ -1,0 +1,14 @@
+.create{
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.create > div{
+    width: 80vw;
+    height: 80vh;
+    background-color: #212529;
+    border-radius: 16px;
+}
