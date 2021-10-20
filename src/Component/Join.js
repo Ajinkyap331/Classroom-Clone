@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase'
+import { useHistory, Link } from "react-router-dom";
 export const Join = (props) => {
+    let history = useHistory();
+
+    if(!props.logged)
+        history.push("/login")
 
     const db = firebase.firestore();
 
@@ -10,7 +15,7 @@ export const Join = (props) => {
 
 
     useEffect(() => {
-        if (props.match.params.code.length === 6)
+        if (props.match.params.code.length === 5)
             db.collection('room').where("code", "==", props.match.params.code).get().then((snap) => {
                 console.log("called")
                 snap.forEach((doc) => {
@@ -20,10 +25,10 @@ export const Join = (props) => {
     }, [])
 
     const Join = async () => {
-        if (props.match.params.code.length === 6)
-        await db.collection('users').doc(props.logged.email).collection('class').add({
-            code: props.match.params.code
-        })
+        if (props.match.params.code.length === 5)
+            await db.collection('users').doc(props.logged.email).collection('class').add({
+                code: props.match.params.code
+            })
         else await db.collection('users').doc(props.logged.email).collection('class').add({
             code: code
         })
@@ -32,14 +37,14 @@ export const Join = (props) => {
 
     return (
         <div>
-            {props.match.params.code.length === 6 ?
+            {props.match.params.code.length === 5 ?
                 <><section>Name : {data.name}</section>
                     <section>Description : {data.desc}</section>
                     <section>Creator : {data.creator}</section>
                     <section><button onClick={Join}>Join Class</button></section>
                 </> :
                 <>
-                    <h3>Enter Code : <input onChange={(e) => setcode(e.target.value)} /></h3>
+                    <h3>Enter Code : </h3><input onChange={(e) => setcode(e.target.value)} />
                     <button onClick={Join}>Join Class</button>
                 </>}
 

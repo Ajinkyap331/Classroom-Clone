@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './Mainbody.css'
 import { Card } from './Card'
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import firebase from 'firebase'
 export const Mainbody = (props) => {
 
@@ -45,7 +45,6 @@ export const Mainbody = (props) => {
       console.log(data)
       setfdata(data)
     }).then(() => {
-
     })
   }
 
@@ -76,6 +75,11 @@ export const Mainbody = (props) => {
 
   return (
     <div className="main-body">
+      <div className = "top-buttons">
+        <Link to={`/join/${props.logged.email}`}><button>Join Classroom</button></Link>
+        <Link to={"/create"}><button>Create Classroom</button></Link>
+      </div>
+      <div class = "cards"> 
       {load ? <>
         {fdata.map((e) => {
           console.log("render")
@@ -85,11 +89,9 @@ export const Mainbody = (props) => {
           )
         })}
       </> : <></>}
-
-      {/* <Card /><Card /><Card /><Card />
-      <Card /><Card /><Card /><Card /> */}
+      {/* <Card name="Fundamental of Data Structure" creator="Ajinkya Patil" desc="For SY Btech Students" photo="https://lh3.googleusercontent.com/a-/AOh14Ggm__5Z1Fq8M654frVrgu7mv0D5rd4Xq5JNhmOVKvo=s96-c" code="kjfhi"/> */}
+      </div>
     </div>
   )
 }
 
-// {desc: 'SY Btech', creator: 'Ajinkya Patil', code: '4fp4v', name: 'FDS', photo: 'https://lh3.googleusercontent.com/a-/AOh14Ggm__5Z1Fq8M654frVrgu7mv0D5rd4Xq5JNhmOVKvo=s96-c'}

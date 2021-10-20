@@ -1,7 +1,24 @@
-.main-body {
+.cards {
   display: flex;
   justify-content: center;
   overflow: auto;
   gap: 2vw;
   flex-wrap: wrap;
+}
+
+.top-buttons {
+  width: calc(100vw - 80px);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2vw;
+}
+
+.top-buttons > a > button {
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #321588;
+  border: none;
+  box-shadow: 15px 20px 33px -3px rgba(0, 0, 0, 0.84);
 }

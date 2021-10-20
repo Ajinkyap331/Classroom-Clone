@@ -10,11 +10,14 @@ const firebaseConfig = {
     measurementId: "G-VRHYCRT0J7"
 };
 
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig)
 } else {
     firebase.app();
 }
+
+export const storage = firebase.storage();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 

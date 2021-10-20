@@ -22,12 +22,13 @@ export default function Navbar(props) {
         <div>
           <Link to={"/create"}>
             <img src="https://img.icons8.com/windows/24/ffffff/create-new.png" alt="" />
+            <>Create</>
           </Link>
         </div>
         <div>
-
           <Link to={`/join/${props.logged.email}`}>
             <img src="https://img.icons8.com/material-outlined/24/ffffff/plus--v1.png" alt="" />
+            Join
           </Link>
         </div>
         <div onClick={userLogout}><Avatar src={props.logged.photoURL} alt="" /></div>

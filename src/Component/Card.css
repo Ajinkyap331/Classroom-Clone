@@ -2,6 +2,12 @@
   height: 400px;
   width: 300px;
   border: 1px solid white;
+  text-align: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 h1,
@@ -10,14 +16,18 @@ h3,
 h4,
 h5,
 h6 {
+  width: 250px;
   margin: 0;
   padding: 0;
+  font-weight: 100;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .card-nav {
-  
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-nav > * {
-  font-weight: 100;
 }
