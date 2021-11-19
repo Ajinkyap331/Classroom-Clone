@@ -3,7 +3,6 @@ import { Mainbody } from './Component/Mainbody'
 import { Login } from './Component/Login';
 import './App.css';
 import { Join } from './Component/Join'
-import { useState } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,21 +10,32 @@ import {
 } from "react-router-dom";
 import { Create } from './Component/Create';
 import { Room } from './Component/Room';
-
+import firebase from 'firebase'
+import { useDispatch} from 'react-redux'
+import { _login, _logout, _Data } from './REDUX/Actions/index'
 
 function App() {
 
-
-
-  let logged_ = false;
+  const dispatch = useDispatch()
+  // const log = useSelector(state => state.Log)
+  // let logged_ = false;
   const getdata = async () => {
-    let email = localStorage.getItem("email")
-    if (!email) return
-    let displayName = localStorage.getItem("name")
-    let photoURL = localStorage.getItem("photoURL")
-    displayName = displayName.replace(/"/g, "");
-    photoURL = photoURL.replace(/"/g, "");
-    logged_ = { email, displayName, photoURL }
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        dispatch((_Data(user)))
+        dispatch(_login())
+      }
+      else {
+        dispatch(_logout())
+      }
+    })
+    // let email = localStorage.getItem("email")
+    // if (!email) return
+    // let displayName = localStorage.getItem("name")
+    // let photoURL = localStorage.getItem("photoURL")
+    // displayName = displayName.replace(/"/g, "");
+    // photoURL = photoURL.replace(/"/g, "");
+    // logged_ = { email, displayName, photoURL }
   }
 
 
@@ -33,35 +43,32 @@ function App() {
 
 
 
-  const [logged, setlogged] = useState(logged_)
-
-
   return (
     <>
       <Router>
         <Switch>
           <Route exact path="/login">
-            <Login _logged={(data) => setlogged(data)} />
+            <Login/>
           </Route>
           <Route exact path="/" >
-            <Navbar _logged={() => setlogged(false)} logged={logged} />
-            <Mainbody logged={logged} />
+            <Navbar/>
+            <Mainbody/>
           </Route>
           <Route exact path="/join">
-            <Join logged={logged} />
+            <Join/>
           </Route>
           <Route exact path="/create">
-            <Create logged={logged} />
+            <Create/>
           </Route>
           <Route
             exact
             path="/join/:code"
-            render={(props) => <Join {...props} logged={logged} />}
+            render={(props) => <Join {...props}/>}
           />
           <Route
             exact
             path="/room/:code"
-            render={(props) => <Room {...props} logged={logged} />}
+            render={(props) => <Room {...props}/>}
           />
         </Switch>
       </Router>

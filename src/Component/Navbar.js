@@ -2,37 +2,49 @@ import React from "react";
 import { Avatar } from '@mui/material';
 import { logout } from "../firebase/config";
 import "./Navbar.css";
-import { Link } from 'react-router-dom'
+import {Redirect } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { _Data, _logout } from '../REDUX/Actions/index'
 
-export default function Navbar(props) {
+
+export default function Navbar() {
+
+  const info = useSelector(state => state.info)
+  const login_nav = useSelector(state => state.Log)
+  const dispatch = useDispatch()
+
+
 
   const userLogout = () => {
     logout().then(() => {
-      props._logged()
-      localStorage.clear()
+      dispatch(_logout())
+      dispatch(_Data([]))
     })
   }
 
   return (
     <div className="navbar">
-      <div>Your Classroom</div>
-      {console.log(props.logged.photoURL)}
-      <div className="right">
-        <div>Hello {props.logged.displayName}</div>
-        <div>
-          <Link to={"/create"}>
-            <img src="https://img.icons8.com/windows/24/ffffff/create-new.png" alt="" />
-            <>Create</>
-          </Link>
-        </div>
-        <div>
-          <Link to={`/join/${props.logged.email}`}>
-            <img src="https://img.icons8.com/material-outlined/24/ffffff/plus--v1.png" alt="" />
-            Join
-          </Link>
-        </div>
-        <div onClick={userLogout}><Avatar src={props.logged.photoURL} alt="" /></div>
-      </div>
+      {console.log(login_nav)}
+      {
+        login_nav === true
+          ?
+          <>
+            <div className="logo">
+              <div><img alt="" src="https://img.icons8.com/nolan/48/google-classroom.png" /></div>
+              <section>My Classroom</section>
+            </div>
+            <div className="right">
+              <div>Hello {info.displayName.split(" ")[0] }</div>
+              <div className="avatar-nav" ><Avatar src={info.photoURL} alt="" /></div>
+              <div className="button-nav">
+                <button onClick={userLogout} >Logout</button>
+              </div>
+            </div>
+          </>
+          :
+          <Redirect to="/login" />
+      }
+
     </div>
   );
 }

@@ -1,19 +1,22 @@
 .cards {
   display: flex;
   justify-content: center;
-  overflow: auto;
-  gap: 2vw;
+  gap: 20px;
   flex-wrap: wrap;
+  padding: 20px;
 }
 
 .top-buttons {
-  width: calc(100vw - 80px);
+  width: 95vw;
   display: flex;
-  justify-content: space-evenly;
-  padding: 2vw;
+  flex-wrap: wrap;
+  gap: 2vw;
+  justify-content: center;
+  padding: 1vw 0;
 }
 
 .top-buttons > a > button {
+  width: 200px;
   color: white;
   padding: 20px 40px;
   border-radius: 8px;

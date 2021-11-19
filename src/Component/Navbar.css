@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
+
 .navbar {
   display: flex;
   padding: 1.1%;
@@ -5,7 +7,7 @@
   font-weight: lighter;
   justify-content: space-between;
   align-items: center;
-  font-size: calc((3vh + 1.5vw) / 2);
+  font-size: 16px;
 }
 
 .right {
@@ -14,12 +16,54 @@
   gap: 1vw;
 }
 
-.right > div > a{
-  display : flex;
-  gap : 5px;
-  align-items: center;
+.button-nav {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  padding: 10px;
+  background-color: #27292d;
+}
+
+.button-nav > button {
+  width: auto;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  outline: none;
   background-color: #321588;
-  padding : 10px;
-  border-radius: 5px;
-  box-shadow: 15px 20px 30px -5px rgba(0, 0, 0, 0.6);
+  border: none;
+  box-shadow: 15px 20px 33px -3px rgba(0, 0, 0, 0.84);
+  cursor: pointer;
+}
+
+.button-nav:hover {
+  display: inline-block;
+}
+.avatar-nav:hover + .button-nav {
+  display: inline-block;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo > section {
+  font-family: "East Sea Dokdo", cursive;
+  font-size: 30px;
+  color : grey
+}
+
+
+.logo > section:hover {
+  color : white;
+  cursor: default;
+}
+
+@media screen and (max-width: 480px) {
+  .logo > section {
+    display: none;
+  }
 }

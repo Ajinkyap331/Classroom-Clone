@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase'
 import { useHistory, Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { _Class } from '../REDUX/Actions';
 export const Join = (props) => {
     let history = useHistory();
+    const dispatch = useDispatch()
 
-    if(!props.logged)
-        history.push("/login")
-
+    const info = useSelector(state => state.info)
     const db = firebase.firestore();
 
     const [data, setdata] = useState({})
@@ -26,13 +27,14 @@ export const Join = (props) => {
 
     const Join = async () => {
         if (props.match.params.code.length === 5)
-            await db.collection('users').doc(props.logged.email).collection('class').add({
+            await db.collection('users').doc(info.email).collection('class').add({
                 code: props.match.params.code
             })
-        else await db.collection('users').doc(props.logged.email).collection('class').add({
+        else await db.collection('users').doc(info.email).collection('class').add({
             code: code
         })
-
+        dispatch(_Class(null))
+        history.push('/')
     }
 
     return (
