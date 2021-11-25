@@ -6,8 +6,8 @@
   padding: 20px;
 }
 
+
 .top-buttons {
-  width: 95vw;
   display: flex;
   flex-wrap: wrap;
   gap: 2vw;
@@ -24,4 +24,5 @@
   background-color: #321588;
   border: none;
   box-shadow: 15px 20px 33px -3px rgba(0, 0, 0, 0.84);
+  cursor: pointer;
 }

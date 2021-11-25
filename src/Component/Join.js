@@ -16,6 +16,9 @@ export const Join = (props) => {
 
 
     useEffect(() => {
+        if (info === null) {
+            history.push('/login')
+        }
         if (props.match.params.code.length === 5)
             db.collection('room').where("code", "==", props.match.params.code).get().then((snap) => {
                 console.log("called")

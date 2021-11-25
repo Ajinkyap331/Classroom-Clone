@@ -19,6 +19,8 @@ if (!firebase.apps.length) {
 
 export const storage = firebase.storage();
 
+export const db = firebase.firestore();
+
 const provider = new firebase.auth.GoogleAuthProvider();
 
 export const login = async () => {
