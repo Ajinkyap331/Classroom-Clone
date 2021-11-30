@@ -10,7 +10,7 @@
   font-size: 16px;
 }
 
-.right {
+.right-nav {
   display: flex;
   align-items: center;
   gap: 1vw;
@@ -48,18 +48,17 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .logo > section {
   font-family: "East Sea Dokdo", cursive;
   font-size: 40px;
-  color : grey
+  color: grey;
 }
 
-
 .logo > section:hover {
-  color : white;
-  cursor: default;
+  color: white;
 }
 
 @media screen and (max-width: 480px) {

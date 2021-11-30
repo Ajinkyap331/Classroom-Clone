@@ -6,13 +6,16 @@
   padding: 20px;
 }
 
-
 .top-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 2vw;
   justify-content: center;
   padding: 1vw 0;
+}
+
+.top-buttons > a {
+  transition: all 1s;
 }
 
 .top-buttons > a > button {
@@ -25,4 +28,9 @@
   border: none;
   box-shadow: 15px 20px 33px -3px rgba(0, 0, 0, 0.84);
   cursor: pointer;
+}
+
+.top-buttons > a :hover {
+  transform: translate(0, -10px);
+  transition: all 0.3s;
 }

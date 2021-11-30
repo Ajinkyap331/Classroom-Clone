@@ -22,6 +22,12 @@
   margin-right: 10px;
 }
 
+.right-room {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .choose-file {
   display: flex;
   justify-content: center;
@@ -56,5 +62,56 @@ label {
 
 .images-col > img {
   cursor: pointer;
-  transition: 1s ease-out;
+  transition: 0.3s;
+}
+
+.cross-image {
+  display: none;
+  position: absolute;
+  right: 20vw;
+  cursor: pointer;
+}
+
+.chossing-collection {
+  display: flex;
+  justify-content: center;
+}
+
+.cross-image > section > img {
+  position: relative;
+  bottom: -10vh;
+}
+
+.input-room {
+  position: fixed;
+  bottom: 10px;
+  left: 15vw;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.input-room > input {
+  outline: none;
+  border: none;
+  padding: 10px;
+  width: 50vw;
+  background-color: #2d2f33;
+  color: white;
+}
+
+.input-room > img {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .cross-image {
+    right: 7vw;
+  }
+  .input-room > section {
+    display: none;
+  }
 }

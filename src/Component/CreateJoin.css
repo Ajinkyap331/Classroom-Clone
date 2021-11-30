@@ -1,14 +1,123 @@
-.create{
-    display : flex;
-    justify-content : center;
-    align-items : center;
-    width: 100vw;
-    height: 100vh;
+.create {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 98vw;
 }
 
-.create > div{
-    width: 80vw;
-    height: 80vh;
-    background-color: #212529;
-    border-radius: 16px;
+.create > section {
+  display: flex;
+  width: 80vw;
+  height: 80vh;
+  background-color: #212529;
+  border-radius: 16px;
+  padding: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.create > section > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.right > div > section > input {
+  outline: none;
+  width: 380px;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #212529;
+  color: white;
+}
+
+.right > div > section {
+  font-size: 20px;
+}
+
+.right > section > button {
+  width: 420px;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #321588;
+  border: none;
+  box-shadow: 15px 20px 33px -3px rgba(0, 0, 0, 0.84);
+  cursor: pointer;
+}
+
+.right > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 400px;
+  border-radius: 8px;
+}
+
+.right {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+
+.creator-input {
+  width: 400px;
+  border: 3px solid #321588;
+  outline: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #212529;
+  color: white;
+}
+.create-heading {
+  font-size: 30px;
+}
+
+.left-main > img {
+  height: 30vw;
+}
+
+@media screen and (max-width: 480px) {
+  .create-heading {
+    font-size: 20px;
+  }
+  .right > section {
+    font-size: 15px;
+  }
+  .right > section > button {
+    width: 200px;
+  }
+  .right > div {
+    width: 200px;
+    gap: 0;
+  }
+  .right > div > section {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .right > div > section > input {
+    width: 175px;
+  }
+  .creator-input {
+    width: 175px;
+  }
+  .left-main > img {
+    height: 0;
+  }
+  .right {
+    padding: 0px;
+    /* border-radius: 8px; */
+    border: none;
+  }
+  .create > section {
+    display: block;
+  }
 }
